@@ -1,18 +1,32 @@
 from django.shortcuts import render
-from .models import Artist, Artwork
+from .models import Artwork, Artist
+from django.db.models import Q
 
+# 1. ГЛАВНАЯ СТРАНИЦА
 def home(request):
-    total_artists = Artist.objects.count()
-    total_artworks = Artwork.objects.count()
-    return render(request, 'home.html', {
-        'total_artists': total_artists,
-        'total_artworks': total_artworks,
-    })
+    return render(request, 'home.html')
 
-def artist_list(request):  # БЫЛО artists_list → СТАЛО artist_list
-    artists = Artist.objects.all().order_by('name')
+# 2. СТРАНИЦА ХУДОЖНИКОВ
+def artist_list(request):
+    artists = Artist.objects.all()
     return render(request, 'artists.html', {'artists': artists})
 
-def artwork_list(request):  # БЫЛО artworks_list → СТАЛО artwork_list
-    artworks = Artwork.objects.all().select_related('artist').order_by('title')
-    return render(request, 'artworks.html', {'artworks': artworks})
+# 3. СТРАНИЦА КАРТИН С ПОИСКОМ
+def artwork_list(request):
+    # Получаем поисковый запрос
+    search_query = request.GET.get('q', '')
+    
+    # Все картины
+    artworks = Artwork.objects.all()
+    
+    # Если есть поисковый запрос
+    if search_query:
+        artworks = artworks.filter(
+            Q(title__icontains=search_query) |
+            Q(artist__name__icontains=search_query)
+        ).distinct()
+    
+    return render(request, 'artworks.html', {
+        'artworks': artworks,
+        'search_query': search_query,
+    })
