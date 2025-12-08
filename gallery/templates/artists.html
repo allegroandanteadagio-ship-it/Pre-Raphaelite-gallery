@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Художники-прерафаэлиты</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blood-red: #8b0000;
+            --cream: #f5f5f0;
+            --black: #1a1a1a;
+            --gray: #666;
+        }
+        
+        body { 
+            font-family: 'Amarante', 'Georgia', serif; 
+            margin: 60px; 
+            background: var(--cream); 
+            color: var(--black);
+            letter-spacing: 0.5px;
+        }
+        
+        h1 { 
+            color: var(--blood-red); 
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--blood-red);
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 38px;
+        }
+        
+        .back-link { 
+            display: inline-block;
+            margin-bottom: 40px;
+            padding: 12px 25px; 
+            background: var(--black); 
+            color: var(--cream); 
+            text-decoration: none; 
+            border: 3px solid var(--black);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: var(--blood-red);
+            border-color: var(--blood-red);
+            color: white;
+        }
+        
+        .artist-list { 
+            list-style: none; 
+            padding: 0; 
+        }
+        
+        .artist-item { 
+            background: white; 
+            padding: 30px; 
+            margin: 0 0 20px 0; 
+            border: 2px solid #ddd;
+            transition: all 0.3s;
+        }
+        
+        .artist-item:hover {
+            border-color: var(--blood-red);
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.1);
+        }
+        
+        .artist-name {
+            font-size: 28px;
+            color: var(--blood-red);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .artist-dates {
+            color: var(--gray);
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .artist-bio {
+            color: #444;
+            line-height: 1.8;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            font-size: 19px;
+        }
+        
+        .empty-message {
+            background: white;
+            padding: 40px;
+            border: 2px solid #ddd;
+            text-align: center;
+            color: var(--gray);
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Художники братства прерафаэлитов</h1>
+    <a href="/" class="back-link">← На главную</a>
+    
+    <ul class="artist-list">
+        {% for artist in artists %}
+            <li class="artist-item">
+                <div class="artist-name">{{ artist.name }}</div>
+                <div class="artist-dates">
+                    {{ artist.birth_year }} – {{ artist.death_year|default:"?" }}
+                    | {{ artist.country }}
+                </div>
+                <div class="artist-bio">
+                    {{ artist.biography|truncatewords:60|default:"Биография не добавлена" }}
+                </div>
+            </li>
+        {% empty %}
+            <li class="empty-message">
+                Художников пока нет в коллекции. Добавьте через админ-панель.
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

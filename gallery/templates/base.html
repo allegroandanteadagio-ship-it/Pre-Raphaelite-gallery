@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Галерея прерафаэлитов{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blood-red: #8b0000;
+            --cream: #f5f5f0;
+            --black: #1a1a1a;
+            --gray: #666;
+        }
+                
+        body { 
+            font-family: 'Amarante', 'Georgia', serif; 
+            margin: 60px; 
+            background: var(--cream); 
+            color: var(--black);
+            letter-spacing: 0.5px;
+        }
+        
+        h1 { 
+            color: var(--blood-red); 
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--blood-red);
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 38px;
+        }
+        
+        /* Стили навигации */
+        nav {
+            background: var(--black);
+            padding: 15px;
+            margin-bottom: 40px;
+        }
+        
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            margin-right: 30px;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+        
+        nav a:hover {
+            color: var(--blood-red);
+        }
+        
+
+/* Стили для картин */
+.painting-container {
+    display: flex;
+    margin-bottom: 60px;
+    gap: 40px;
+    background: white;
+    padding: 30px;
+    border: 2px solid #ddd;
+    transition: all 0.3s;
+}
+
+.painting-container:hover {
+    border-color: var(--blood-red);
+    box-shadow: 0 5px 15px rgba(139, 0, 0, 0.1);
+}
+
+.painting-title {
+    font-size: 28px;
+    color: var(--blood-red);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--blood-red);
+    padding-bottom: 10px;
+}
+
+.painting-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Стили для художников */
+.artist-list { 
+    list-style: none; 
+    padding: 0; 
+}
+
+.artist-item { 
+    background: white; 
+    padding: 30px; 
+    margin: 0 0 20px 0; 
+    border: 2px solid #ddd;
+    transition: all 0.3s;
+}
+
+.artist-item:hover {
+    border-color: var(--blood-red);
+    box-shadow: 0 5px 15px rgba(139, 0, 0, 0.1);
+}
+
+.artist-name {
+    font-size: 28px;
+    color: var(--blood-red);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.empty-message {
+    background: white;
+    padding: 40px;
+    border: 2px solid #ddd;
+    text-align: center;
+    color: var(--gray);
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+/* Обновлённые стили навигации */
+nav {
+    background: var(--black);
+    padding: 15px 0;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center; /* Центрирование */
+}
+
+nav a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 10px 25px; /* Отступы вокруг текста */
+    transition: all 0.3s;
+    border-right: 1px solid rgba(245, 245, 240, 0.2); /* Разделители */
+}
+
+/* Убираем границу у последнего элемента */
+nav a:last-child {
+    border-right: none;
+}
+
+nav a:hover {
+    color: var(--blood-red);
+    background: rgba(139, 0, 0, 0.1);
+}
+
+/* Или вариант с равномерным распределением */
+/*
+nav {
+    display: flex;
+    justify-content: space-between; /* Равномерное распределение */
+    background: var(--black);
+    padding: 15px 30px;
+    margin-bottom: 40px;
+}
+*/
+
+/* Для админ-панели справа */
+.nav-admin {
+    margin-left: auto; /* Прижимает к правому краю */
+}
+footer {
+    margin-top: 60px;
+    padding: 20px;
+    background: var(--black);
+    color: var(--cream);
+    text-align: center;
+    border-top: 3px solid var(--blood-red);
+    font-family: 'Amarante', serif;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/artists/">Художники</a>
+        <a href="/artworks/">Картины</a>
+        {% if user.is_authenticated %}
+            <a href="/admin/">Админ-панель</a>
+        {% endif %}
+    </nav>
+    
+    {% block content %}{% endblock %}
+     <footer>
+        <div style="font-family: 'Amarante', serif; font-size: 18px; margin-bottom: 10px;">
+            ВИРТУАЛЬНЫЙ МУЗЕЙ ПРЕРАФАЭЛИТОВ
+        </div>
+        <div style="font-size: 14px; color: #aaa;">
+            © 2024 Все права защищены. Коллекция представлена в образовательных целях.<br>
+            Изображения принадлежат их правообладателям.
+        </div>
+    </footer>
+</body>
+</html>
