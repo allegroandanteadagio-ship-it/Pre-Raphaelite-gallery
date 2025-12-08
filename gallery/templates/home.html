@@ -1,134 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Музей прерафаэлитов</title>
-    <!-- ПОДКЛЮЧАЕМ ШРИФТ AMARANTE -->
-    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
-    <style>
-        body { 
-            font-family: 'Amarante', 'Georgia', serif; 
-            margin: 60px; 
-            background: #f5f5f0; 
-            color: #1a1a1a;
-            letter-spacing: 0.5px;
-        }
-        h1 { 
-            color: #000; 
-            text-align: left; 
-            font-size: 42px;
-            margin-bottom: 40px;
-            border-bottom: 3px solid #000;
-            padding-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .nav { 
-            margin: 50px 0; 
-        }
-        .nav a { 
-            display: inline-block;
-            margin-right: 15px; 
-            margin-bottom: 10px;
-            padding: 15px 30px; 
-            background: #000; 
-            color: #f5f5f0; 
-            text-decoration: none; 
-            border: 3px solid #000;
-            font-weight: normal;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 18px;
-            transition: all 0.3s;
-        }
-        .nav a:hover {
-            background: #f5f5f0;
-            color: #000;
-        }
-        .quote { 
-            font-style: normal; 
-            color: #333; 
-            margin: 50px 0; 
-            font-size: 22px;
-            line-height: 1.7;
-            border-left: 4px solid #000;
-            padding-left: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .quote strong {
-            display: block;
-            margin-top: 10px;
-            font-size: 18px;
-            color: #666;
-            text-transform: none;
-        }
-        .content { 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            line-height: 1.9; 
-            font-size: 20px;
-        }
-        p {
-            margin-bottom: 25px;
-            text-align: justify;
-        }
-        ul {
-            list-style: none;
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 15px;
-            padding-left: 20px;
-            position: relative;
-        }
-        li:before {
-            content: "■";
-            position: absolute;
-            left: 0;
-            color: #000;
-        }
-        .footer {
-            margin-top: 80px;
-            padding-top: 25px;
-            border-top: 2px solid #ccc;
-            font-size: 16px;
-            color: #666;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-    </style>
-</head>
-<body>
-    <div class="content">
-        <h1>Виртуальный музей прерафаэлитов</h1>
-        
-        <div class="quote">
-            Искусство должно быть посвящено серьёзным целям, 
-            а не служить праздному развлечению<br>
-            <strong>— Джон Рёскин</strong>
+<!{% extends 'base.html' %}
+
+{% block title %}Виртуальный музей прерафаэлитов{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center; margin-bottom: 50px; font-family: 'Amarante', serif; font-size: 42px; letter-spacing: 3px;">
+        ВИРТУАЛЬНЫЙ МУЗЕЙ ПРЕРАФАЭЛИТОВ
+    </h1>
+    
+    <div style="background: white; padding: 40px; border: 2px solid #ddd; margin-bottom: 40px;">
+        <h2 style="color: #8b0000; text-align: center; margin-bottom: 30px; font-family: 'Amarante', serif; font-size: 32px;">
+            О БРАТСТВЕ
+        </h2>
+        <p style="font-size: 19px; line-height: 1.8; text-align: justify; max-width: 900px; margin: 0 auto 20px;">
+            <strong style="font-family: 'Amarante', serif; color: #8b0000;">Прерафаэлиты</strong> 
+            <em>(англ. Pre-Raphaelites)</em> — направление в английской поэзии и живописи во второй половине XIX века, 
+            образовавшееся в 1848 году с целью борьбы против условностей викторианской эпохи, 
+            академических традиций и слепого подражания классическим образцам.
+        </p>
+        <p style="font-size: 19px; line-height: 1.8; text-align: justify; max-width: 900px; margin: 0 auto;">
+            <strong style="font-family: 'Amarante', serif; color: #8b0000;">Основатели Братства прерафаэлитов:</strong><br>
+            • <strong>Джон Эверетт Милле</strong> (1829–1896) – художник<br>
+            • <strong>Данте Габриэль Россетти</strong> (1828–1882) – художник и поэт<br>
+            • <strong>Уильям Холман Хант</strong> (1827–1910) – художник<br>
+            • <strong>Уильям Майкл Россетти</strong> (1829–1919) – поэт и критик, брат Данте Габриэля<br>
+            • <strong>Фредерик Джордж Стивенс</strong> (1828–1907) – художественный критик<br>
+            • <strong>Томас Вулнер</strong> (1825–1892) – скульптор и поэт<br>
+            • <strong>Джеймс Коллинсон</strong> (1825–1881) – художник
+        </p>
+    </div>
+    
+    <div style="display: flex; gap: 30px; margin-bottom: 50px;">
+        <div style="flex: 1; background: white; padding: 30px; border: 2px solid #ddd; text-align: center;">
+            <h3 style="color: #1a1a1a; margin-bottom: 15px; font-family: 'Amarante', serif; font-size: 28px;">
+                КОЛЛЕКЦИЯ КАРТИН
+            </h3>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 20px; font-size: 18px;">
+                Исследуйте знаменитые полотна с детальными описаниями, 
+                историей создания и анализом художественных приёмов.
+            </p>
+            <a href="/artworks/" style="display: inline-block; padding: 12px 30px; background: #1a1a1a; color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; font-family: 'Amarante', serif; font-size: 18px;" 
+               onmouseover="this.style.background='#8b0000'" 
+               onmouseout="this.style.background='#1a1a1a'">
+                ПЕРЕЙТИ К КОЛЛЕКЦИИ
+            </a>
         </div>
         
-        <div class="nav">
-            <a href="/artists/">Художники</a>
-            <a href="/artworks/">Картины</a>
-            <a href="/admin/">Админ-панель</a>
-        </div>
-        
-        <p><strong>Прерафаэли́ты</strong> (англ. Pre-Raphaelites) — направление в английской поэзии и живописи 
-        во второй половине XIX века, образовавшееся в 1848 году с целью борьбы против условностей 
-        викторианской эпохи, академических традиций и слепого подражания классическим образцам.</p>
-        
-        <p>Основатели Братства прерафаэлитов:</p>
-        <ul>
-            <li><strong>Данте Габриэль Россетти</strong> (1828–1882)</li>
-            <li><strong>Джон Эверетт Милле</strong> (1829–1896)</li>
-            <li><strong>Уильям Холман Хант</strong> (1827–1910)</li>
-        </ul>
-        
-        <div class="footer">
-            Виртуальный музей прерафаэлитов © 2025
+        <div style="flex: 1; background: white; padding: 30px; border: 2px solid #ddd; text-align: center;">
+            <h3 style="color: #1a1a1a; margin-bottom: 15px; font-family: 'Amarante', serif; font-size: 28px;">
+                МАСТЕРА БРАТСТВА
+            </h3>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 20px; font-size: 18px;">
+                Познакомьтесь с художниками-прерафаэлитами, их биографиями, 
+                творческими принципами и влиянием на искусство.
+            </p>
+            <a href="/artists/" style="display: inline-block; padding: 12px 30px; background: #1a1a1a; color: white; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; font-family: 'Amarante', serif; font-size: 18px;"
+               onmouseover="this.style.background='#8b0000'" 
+               onmouseout="this.style.background='#1a1a1a'">
+                ИЗУЧИТЬ ХУДОЖНИКОВ
+            </a>
         </div>
     </div>
-</body>
-</html>
+    
+    <div style="text-align: center; padding: 30px; background: #f8f8f8; border-top: 3px solid #8b0000;">
+        <p style="font-style: italic; font-size: 20px; color: #666; margin-bottom: 15px; line-height: 1.6;">
+            «Мы верим, что искусство должно быть искренним, должно обращаться к природе,<br> 
+            должно выражать серьёзные мысли и должно быть прекрасным.»
+        </p>
+        <p style="color: #8b0000; font-weight: bold; text-transform: uppercase; font-family: 'Amarante', serif; font-size: 18px;">
+            — УИЛЬЯМ ХОЛМАН ХАНТ, СООСНОВАТЕЛЬ БРАТСТВА ПРЕРАФАЭЛИТОВ
+        </p>
+    </div>
+
+{% endblock %}
